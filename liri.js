@@ -17,7 +17,18 @@ if(process.argv.length > 3){
 }
 
 switch(command){
-    
+    case "my-tweets":
+    twitter();
+    break;
+    case "spotify-this-song":
+    spotify();
+    break;
+    case "movie-this":
+    imdb();
+    break;
+    default:
+    random();
+    break;
 }
 
 function twitter(){
@@ -35,7 +46,7 @@ function twitter(){
 }
 
 function spotify(){
-    //console.log(instruction);
+    console.log(instruction);
     
     var song = new Spotify(keys.spotify);
     song.search({ 
