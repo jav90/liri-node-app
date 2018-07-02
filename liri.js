@@ -16,19 +16,23 @@ if(process.argv.length > 3){
     }
 }
 
-switch(command){
-    case "my-tweets":
-    twitter();
-    break;
-    case "spotify-this-song":
-    spotify();
-    break;
-    case "movie-this":
-    imdb();
-    break;
-    default:
-    random();
-    break;
+choose(command);
+
+function choose(choice){
+    switch(choice){
+        case "my-tweets":
+        twitter();
+        break;
+        case "spotify-this-song":
+        spotify();
+        break;
+        case "movie-this":
+        imdb();
+        break;
+        default:
+        random();
+        break;
+    }
 }
 
 function twitter(){
@@ -94,6 +98,7 @@ function imdb(){
     });
 }
 
+var num = 0;
 function random(){
     var dataArr;
     var dataArr2;
@@ -105,29 +110,42 @@ function random(){
         }
       
         // We will then print the contents of data
-        console.log(data);
+        //console.log(data);
       
         // Then split it by commas (to make it more readable)
         dataArr = data.split("\r\n"); 
-        console.log(dataArr);
+        //console.log(dataArr.length);
     
-        dataArr2 = dataArr[Math.floor(Math.random() * dataArr.length)].split(",");
-        console.log(dataArr2);
+        let index = Math.floor(Math.random() * dataArr.length);
+        dataArr2 = dataArr[index].split(",");
+        //console.log(dataArr2);
         instruction = dataArr2[1];
-        switch (dataArr[0]){
-            case "my-tweets":
-                twitter();
-            break;
-            case "spotify-this-song":
-                spotify();
-            break;
-            case "movie-this":
-                imdb();
-            break;
-            default:
-            break;
-        }
-    });
+        //console.log("instuction " + dataArr2[0]);
+        
+        //if(num < 4){
+            choose(dataArr2[0]);
+        //}
+        //num++;
+        return true;
+    })
+    //.then(choose(answer));
+        
+    // function(){
+    //     switch (dataArr[0]){
+    //         case "my-tweets":
+    //             twitter();
+    //         break;
+    //         case "spotify-this-song":
+    //             spotify();
+    //         break;
+    //         case "movie-this":
+    //             imdb();
+    //         break;
+    //         default:
+    //         break;
+    //     }
+        
+    // });
     
 
 
