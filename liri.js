@@ -52,9 +52,11 @@ function spotify(){
     song.search({ 
         type: 'track', query: instruction 
     }).then(function(response) {
+        //console.log(response.tracks.items[0]);
+        
         let artists = response.tracks.items[0].artists;
-        console.log(artists.name);
-        console.log("Artist: " + response.tracks.items[0].artists.name);
+        //console.log(artists.name);
+        console.log("Artist: " + response.tracks.items[0].artists[0].name);
         console.log("Song: " + response.tracks.items[0].name);
         console.log("Album: " + response.tracks.items[0].album.name);
         console.log("Preview: " + response.tracks.items[0].preview_url);
